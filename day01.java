@@ -40,11 +40,11 @@ class Day01 {
         int j = 0;
         int score = 0;
         result = 0;
-        while (i < list1.size() && j < list2.size()) {
+        while (i < list1.size()) {
             if (score == 0 && predecessor == list1.get(i)) {
                 result += predecessorScore;
                 i++;
-            } else if (list1.get(i) < list2.get(j)) {
+            } else if (j == list2.size() || list1.get(i) < list2.get(j)) {
                 result += score;
                 predecessor = list1.get(i);
                 predecessorScore = score;
@@ -54,11 +54,9 @@ class Day01 {
                 score += list1.get(i);
                 j++;
             } else {
-
                 j++;
             }
         }
         System.out.println("part 2: " + result);
-
     }
 }
