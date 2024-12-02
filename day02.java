@@ -6,7 +6,9 @@ import java.util.Scanner;
 
 class Day02 {
     public void main(String[] args) {
+        // part 1
         int result1 = 0;
+        // part 2
         int result2 = 0;
         try {
             File input = new File("input02.txt");
@@ -15,6 +17,8 @@ class Day02 {
                 String data = scanner.nextLine();
                 String[] levels = data.split(" ", 0);
                 int[] numbers = Arrays.stream(levels).mapToInt(Integer::parseInt).toArray();
+
+                // shared part
                 boolean safe = true;
                 boolean increasing = numbers[0] < numbers[1];
                 for (int i = 0; i < numbers.length - 1; i++) {
@@ -32,7 +36,10 @@ class Day02 {
                 if (safe) {
                     result1++;
                     result2++;
+                // exclusive part 2
                 } else {
+                    // brute force every option of removing one level from the (unsafe) report
+                    // changing data structure from int[] to ArrayList<Integer> for easy data manipulation
                     Integer[] objectNumbers = Arrays.stream(numbers).boxed().toArray(Integer[]::new);
                     ArrayList<Integer> list = new ArrayList<>(Arrays.asList(objectNumbers));
                     for (int i = 0; i < numbers.length; i++) {
